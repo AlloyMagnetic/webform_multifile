@@ -9,7 +9,7 @@
       $("input[type=file].multi").once(function(){
         var $field = $(this);
         var newname = ($field.attr('name') + '[]');
-        if ($.browser.msie === true) {
+        if ($.browser && $.browser.msie === true) {
           $field.replaceWith($($field.get(0).outerHTML.replace(/name=\w+/ig, 'name=' + newname)));
         }
         else {
