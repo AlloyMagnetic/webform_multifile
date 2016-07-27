@@ -95,8 +95,10 @@ function webform_multifile_file_download($uri) {
   $submission_id = $submission_uid = NULL;
   while ($multifile_row = $multifile_scan->fetchAssoc()) {
     $file_ids = drupal_json_decode($multifile_row['data']);
-    if (in_array($target_document->fid, $file_ids) ) {
-      $submission_id = $multifile_row['sid'];
+    if (!empty($file_ids)) {
+      if (in_array($target_document->fid, $file_ids) ) {
+        $submission_id = $multifile_row['sid'];
+      }
     }
   }
   if ($submission_id) {
